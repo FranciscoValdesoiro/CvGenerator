@@ -9,7 +9,7 @@ const Aside = props => {
   return (
     <div className={classes.header}>
         <Typography variant="p" component="p">
-          FRANCISCO VALDESOIRO GIL
+          NOMBRE Y APELLIDOS
         </Typography>
     </div>
   );

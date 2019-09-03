@@ -4,20 +4,20 @@ import Avatar from '@material-ui/core/Avatar';
 import styles from './Styles.View'
 import Typography from '@material-ui/core/Typography';
 import imgAvatar from '../../../../assets/img/avatar.png'
-
+import './header.css'
 
 const Header = props => {
     const {classes} = props
   return (
-    <div className={classes.header}>
+    <div className="header">
       <Avatar alt="Remy Sharp" src={imgAvatar} className={classes.avatar} />
       <div className={classes.headerContentText}>
         <Typography variant="h3" component="h2">
-          FRANCISCO VALDESOIRO GIL
+          NOMBRE Y APELLIDOS
         </Typography>
 
         <Typography variant="h4" component="h2">
-          DESARROLLADOR WEB MOBILE
+          PUESTO A DESEMPEÑAR
         </Typography>
       </div>
     </div>
