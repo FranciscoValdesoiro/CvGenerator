@@ -46,7 +46,6 @@ class ImageCrop extends PureComponent {
         "newFile.jpeg"
       );
       this.setState({ croppedImageUrl });
-
     }
   }
 
