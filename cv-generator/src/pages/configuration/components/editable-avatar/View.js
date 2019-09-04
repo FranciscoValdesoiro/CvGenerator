@@ -4,7 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import PropTypes from 'prop-types';
 import styles from './Styles.View'
 import Avatare from 'react-avatar-edit'
-import img from '../../../../../../assets/img/avatar.png'
+import img from '../../../../assets/img/avatar.png'
 
 class EditableAvatar extends React.Component {
 
@@ -19,15 +19,13 @@ class EditableAvatar extends React.Component {
     this.onClose = this.onClose.bind(this)
   }
   
-
-
   onClose() {
     this.setState({preview: null})
   }
   
   onCrop(preview) {
     this.setState({preview})
-    console.log(typeof(preview))
+    this.props.handleOnchange(preview)
   }
   
   render () {
