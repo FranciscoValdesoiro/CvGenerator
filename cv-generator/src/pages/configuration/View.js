@@ -50,7 +50,7 @@ const Configuration = props => {
   return (
     <div>
      <h2>Configuration</h2>
-     <EditableAvatar width={295} height={295} handleOnchange={handleOnchangeAvatar} />
+     <EditableAvatar width={720} height={320} handleOnchange={handleOnchangeAvatar} />
 
     <ImageCrop src={bgImageSt} handleOnchange={handleOnchangeBg}/>
 

@@ -31,7 +31,7 @@ const Header = props => {
     <div>
       <div className="header" style={{ backgroundImage : `url(${bgImageSt})` }}>
         <Avatar alt="Remy Sharp" src={avatarImageSt} className={classes.avatar} />
-        <div className={classes.headerContentText}>
+        <div  style={{ background: `rgba(0,0,0,0.5)` }} >
           <Typography variant="h3" component="h2">
             NOMBRE Y APELLIDOS
           </Typography>

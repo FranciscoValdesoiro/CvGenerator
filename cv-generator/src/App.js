@@ -6,12 +6,23 @@ import Root from './pages/View'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from './store'
+import { Button } from '@material-ui/core';
 
 function App() {
-
   const [bgImageSt, setBgImageSt] = useState("bgImage");
    const [avatarImageSt, setAvatarImageSt] = useState("avatarImage");
+   const [configurationActive, setConfigurationActive] = useState(false);
 
+   var styles = {
+    configuration: {
+      display: configurationActive ? "flex" : "none",
+      maxWidth: 'min-content'
+    },
+  }
+
+const handleOnclick = () => {
+  setConfigurationActive(!configurationActive)
+}
   
 
   return (
@@ -23,30 +34,29 @@ function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to={{
-                  pathname: '/configuration/',
-                  state: {
-                    bgImage: bgImageSt,
-                    avatarImage: avatarImageSt
-                  }
-                }}>Configuration</Link>  
-                
+                <Link to="/configuration/">Configuration</Link>  
               </li>
               <li>
-                
-                <Link to={{
-                  pathname: '/cv/',
-                  state: {
-                    bgImage: bgImageSt,
-                    avatarImage: avatarImageSt
-                  }
-                }}>Cv</Link>  
+                <Link to="/cv/">Cv</Link>  
               </li>
             </ul>
           </nav>
-          <Route path="/" exact render={(props) => <Root {...props}  />} />
-          <Route path="/configuration/" render={(props) => <Configuration {...props} />} />
-          <Route path="/cv/" component={Cv} />
+            <Button
+              variant="contained" 
+              color="primary"
+              onClick={handleOnclick}
+            >
+              Config
+            </Button>
+          <div style={{display: "flex"}}>
+            <div style={styles.configuration}>
+              <Configuration />
+            </div>
+
+            <Route path="/" exact render={(props) => <Root {...props}  />} />
+            <Route path="/configuration/" render={(props) => <Configuration {...props} />} />
+            <Route path="/cv/" component={Cv} />
+          </div>
       </Router>
     </Provider>
   );

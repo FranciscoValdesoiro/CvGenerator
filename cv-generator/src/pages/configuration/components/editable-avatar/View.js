@@ -1,9 +1,8 @@
 import React from 'react'
 import { withStyles } from '@material-ui/styles';
-import Avatar from '@material-ui/core/Avatar';
 import PropTypes from 'prop-types';
 import styles from './Styles.View'
-import Avatare from 'react-avatar-edit'
+import Avatar from 'react-avatar-edit'
 import img from '../../../../assets/img/avatar.png'
 
 class EditableAvatar extends React.Component {
@@ -31,17 +30,13 @@ class EditableAvatar extends React.Component {
   render () {
     return (
       <div className={this.props.classes.editAvatar}>
-        <Avatare
+        <Avatar
           width={this.props.width}
           height={this.props.height}
           onCrop={this.onCrop}
           onClose={this.onClose}
           src={this.state.src}
         />
-        <img src={this.state.preview} className={this.props.classes.avatar} alt="Preview" />
-
-        <Avatar alt="Remy Sharp" src={this.state.preview} className={this.props.classes.avatar} />
-
       </div>
     )
   }
