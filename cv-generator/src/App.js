@@ -1,42 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import Cv from './pages/cv/View'
-import Configuration from './pages/configuration/View'
+import Cv from './pages/cv/index'
+import Configuration from './pages/configuration/index'
 import Root from './pages/View'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from './store'
 
 function App() {
 
-  const handleOnchangeBg = img => {
-    console.log("imageBgAPP: ", img)
-  }
+  const [bgImageSt, setBgImageSt] = useState("bgImage");
+   const [avatarImageSt, setAvatarImageSt] = useState("avatarImage");
 
-  const handleOnchangeAvatar = img => {
-    console.log("imageAvatarAPP: ", img)
-  }
+  
 
   return (
-    <div className="App">
-     <Router>
-      <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/configuration/">Configuration</Link>
-              
-            </li>
-            <li>
-              <Link to="/cv/">Cv</Link>
-            </li>
-          </ul>
-        </nav>
-        <Route path="/" exact render={(props) => <Root {...props}  />} />
-        <Route path="/configuration/" render={(props) => <Configuration {...props} handleOnchangeAvatar={handleOnchangeAvatar} handleOnchangeBg={handleOnchangeBg} />} />
-        <Route path="/cv/" component={Cv} />
-    </Router>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to={{
+                  pathname: '/configuration/',
+                  state: {
+                    bgImage: bgImageSt,
+                    avatarImage: avatarImageSt
+                  }
+                }}>Configuration</Link>  
+                
+              </li>
+              <li>
+                
+                <Link to={{
+                  pathname: '/cv/',
+                  state: {
+                    bgImage: bgImageSt,
+                    avatarImage: avatarImageSt
+                  }
+                }}>Cv</Link>  
+              </li>
+            </ul>
+          </nav>
+          <Route path="/" exact render={(props) => <Root {...props}  />} />
+          <Route path="/configuration/" render={(props) => <Configuration {...props} />} />
+          <Route path="/cv/" component={Cv} />
+      </Router>
+    </Provider>
   );
 }
 

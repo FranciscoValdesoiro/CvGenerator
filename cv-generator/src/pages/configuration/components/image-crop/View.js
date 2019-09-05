@@ -7,9 +7,9 @@ class ImageCrop extends PureComponent {
   state = {
     src: null,
     crop: {
-      unit: "cm",
-      width: 21,
-      aspect: 16 / 6
+      unit: "px",
+      width: 793,
+      aspect: 793 / 200
     }
   };
 

@@ -1,11 +1,10 @@
 import { connect } from 'react-redux'
-import View from './View'
 
 
-const mapStateToProps = state => ({
-    bgImage: state.bgImage,
-    avatarImage: state.avatarImage,
-})
+
+const mapStateToProps = () => {
+
+}
 
 const mapDispatchToProps = () => {
     
