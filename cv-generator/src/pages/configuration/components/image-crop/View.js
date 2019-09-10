@@ -1,16 +1,19 @@
 import React, { PureComponent } from "react";
+import { withStyles } from '@material-ui/styles';
+import styles from './Styles.View'
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
+import store from '../../../../store'
 
 
 class ImageCrop extends PureComponent {
   state = {
-    src: null,
+    src: store.bgImage,
     crop: {
       unit: "px",
       width: 793,
       aspect: 793 / 200
-    }
+    },
   };
 
   onSelectFile = e => {
@@ -35,6 +38,7 @@ class ImageCrop extends PureComponent {
   onCropChange = (crop, percentCrop) => {
     // You could also use percentCrop:
     // this.setState({ crop: percentCrop });
+    console.log(crop)
     this.setState({ crop });
   };
 
@@ -89,25 +93,23 @@ class ImageCrop extends PureComponent {
     const { crop, croppedImageUrl, src } = this.state;
 
     return (
-      <div className="App">
-        <div>
-          <input type="file" onChange={this.onSelectFile} />
+        <div className="App">
+          <div>
+            <input type="file" onChange={this.onSelectFile} />
+          </div>
+          {src && (
+            <ReactCrop
+              imageStyle={{ width: "max-content" }}
+              src={src}
+              crop={crop}
+              onImageLoaded={this.onImageLoaded}
+              onComplete={this.onCropComplete}
+              onChange={this.onCropChange}
+            />
+          )}
         </div>
-        {src && (
-          <ReactCrop
-            src={src}
-            crop={crop}
-            onImageLoaded={this.onImageLoaded}
-            onComplete={this.onCropComplete}
-            onChange={this.onCropChange}
-          />
-        )}
-        {croppedImageUrl && (
-          <img alt="Crop" style={{ maxWidth: "100%" }} src={croppedImageUrl} />
-        )}
-      </div>
     );
   }
 }
 
-export default ImageCrop;
+export default withStyles(styles)(ImageCrop);

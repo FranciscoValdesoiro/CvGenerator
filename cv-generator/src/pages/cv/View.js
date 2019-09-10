@@ -12,18 +12,31 @@ const Cv = props => {
     classes,
     bgImage,
     avatarImage,
+    name,
+    job
   } = props
 
   const [bgImageSt, setBgImageSt] = useState(bgImage);
   const [avatarImageSt, setAvatarImageSt] = useState(avatarImage);
+  const [nameText, setNameText] = useState(name);
+  const [jobText, setJobText] = useState(job);
 
   useEffect(() => {
     setBgImageSt(bgImage);
   }, [bgImage]);
 
+  
   useEffect(() => {
     setAvatarImageSt(avatarImage);
   }, [avatarImage]);
+
+  useEffect(() => {
+    setNameText(name);
+  }, [name]);
+
+  useEffect(() => {
+    setJobText(job);
+  }, [job]);
 
 
   return (
@@ -31,6 +44,8 @@ const Cv = props => {
       <Header 
         bgImage={bgImageSt} 
         avatarImage={avatarImageSt} 
+        nameText={nameText}
+        jobText={jobText}
       />
       <div className={classes.container}>
         <div className={classes.aside}>

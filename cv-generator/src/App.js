@@ -9,9 +9,7 @@ import store from './store'
 import { Button } from '@material-ui/core';
 
 function App() {
-  const [bgImageSt, setBgImageSt] = useState("bgImage");
-   const [avatarImageSt, setAvatarImageSt] = useState("avatarImage");
-   const [configurationActive, setConfigurationActive] = useState(false);
+const [configurationActive, setConfigurationActive] = useState(false);
 
    var styles = {
     configuration: {

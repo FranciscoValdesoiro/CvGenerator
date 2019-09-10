@@ -1,8 +1,11 @@
 import { createStore } from 'redux';
+import img from './assets/img/avatar.png'
 
 const initialState = {
     bgImage: '',
-    avatarImage: '',
+    avatarImage: img,
+    name: 'Mike Walton',
+    job: 'Full Stack Developer'
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +21,20 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             avatarImage: action.avatarImage 
+        };
+    }
+
+    if(action.type === "CHANGE_NAME"){
+        return {
+            ...state,
+            name: action.name 
+        };
+    }
+
+    if(action.type === "CHANGE_JOB"){
+        return {
+            ...state,
+            job: action.job 
         };
     }
     

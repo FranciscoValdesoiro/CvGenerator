@@ -3,22 +3,23 @@ import { withStyles } from '@material-ui/styles';
 import Avatar from '@material-ui/core/Avatar';
 import styles from './Styles.View'
 import Typography from '@material-ui/core/Typography';
-import EditableAvatar from '../../../configuration/components/editable-avatar/View';
-import ImageCrop from '../../../configuration/components/image-crop/View';
-import imgAvatar from '../../../../assets/img/avatar.png'
 import './header.css'
-import { connect } from 'react-redux'
 
 const Header = props => {
     const {
       classes,
       bgImage,
-      avatarImage
+      avatarImage,
+      nameText,
+      jobText
     } = props
 
     const [bgImageSt, setBgImageSt] = useState(bgImage);
     const [avatarImageSt, setAvatarImageSt] = useState(avatarImage);
- 
+    const [name, setName] = useState(nameText);
+    const [job, setJob] = useState(jobText);
+
+
     useEffect(() => {
      setBgImageSt(bgImage);
    }, [bgImage]);
@@ -26,6 +27,14 @@ const Header = props => {
    useEffect(() => {
      setAvatarImageSt(avatarImage);
    }, [avatarImage]);
+
+   useEffect(() => {
+    setName(nameText);
+  }, [nameText]);
+
+  useEffect(() => {
+    setJob(jobText);
+  }, [jobText]);
  
   return (
     <div>
@@ -33,11 +42,11 @@ const Header = props => {
         <Avatar alt="Remy Sharp" src={avatarImageSt} className={classes.avatar} />
         <div  className={classes.headerContentText} >
           <Typography variant="h3" component="h2">
-            NOMBRE Y APELLIDOS
+            {name}
           </Typography>
 
           <Typography variant="h4" component="h2">
-            PUESTO A DESEMPEÑAR
+            {job}
           </Typography>
         </div>
       </div>
