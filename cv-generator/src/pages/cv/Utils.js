@@ -1,5 +1,6 @@
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import store from '../../store'
 
 /*
 const pxToMm = (px) => {
@@ -18,9 +19,13 @@ const range = (start, end) => {
 
 const savePdf = () => {
 
+    const state = store.getState()
+    console.log(state)
     const input = document.getElementById("cv");
 
-    html2canvas(input)
+    html2canvas(input, {
+      allowTaint: true,
+    })
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF();
@@ -29,8 +34,5 @@ const savePdf = () => {
     });
 
 }
-
-
-
 
 export default savePdf;

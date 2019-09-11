@@ -8,7 +8,7 @@ import store from '../../../../store'
 
 class ImageCrop extends PureComponent {
   state = {
-    src: store.bgImage,
+    src: store.getState().bgImage,
     crop: {
       unit: "px",
       width: 793,

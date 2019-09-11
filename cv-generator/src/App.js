@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Cv from './pages/cv/index'
 import Configuration from './pages/configuration/index'
-import Root from './pages/View'
+import Home from './pages/home/View'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from './store'
@@ -51,7 +51,7 @@ const handleOnclick = () => {
               <Configuration />
             </div>
 
-            <Route path="/" exact render={(props) => <Root {...props}  />} />
+            <Route path="/" exact render={(props) => <Home {...props}  />} />
             <Route path="/configuration/" render={(props) => <Configuration {...props} />} />
             <Route path="/cv/" component={Cv} />
           </div>

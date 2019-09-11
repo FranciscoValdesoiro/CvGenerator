@@ -1,6 +1,5 @@
 const styles = {
     header: {
-        backgroundColor: "darkGray",
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',

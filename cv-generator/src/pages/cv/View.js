@@ -6,7 +6,6 @@ import Content from './components/content/View'
 import styles from './Styles.View'
 import savePdf from './Utils'
 
-
 const Cv = props => {
   const {
     classes,
@@ -20,9 +19,9 @@ const Cv = props => {
   const [avatarImageSt, setAvatarImageSt] = useState(avatarImage);
   const [nameText, setNameText] = useState(name);
   const [jobText, setJobText] = useState(job);
-
   useEffect(() => {
     setBgImageSt(bgImage);
+    console.log("changed background")
   }, [bgImage]);
 
   
@@ -38,6 +37,7 @@ const Cv = props => {
     setJobText(job);
   }, [job]);
 
+console.log(name, job)
 
   return (
     <div id="cv" className={classes.page} onClick={savePdf}>
